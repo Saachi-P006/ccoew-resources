@@ -1,0 +1,144 @@
+/* WRAPPER: left scrapbook + right resources */
+.roadmaps-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content:space-evenly; /* flush left */
+  gap: 50px; /* space between scrapbook and resources */
+  width: 100%;
+  padding: 0; /* no extra padding */
+  flex-wrap: wrap;
+}
+
+/* SCRAPBOOK: exact original size */
+.scrapbook-container {
+  position: relative;
+  width: 92%;
+  max-width: 700px; /* original size */
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  padding: 10px;
+}
+
+/* POLAROID STRIPS */
+.roadmap-strip {
+  position: absolute;
+  background: #ffffffdd;
+  padding: 10px 16px;
+  width: 140px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
+}
+
+.left-strip { left: 10%; transform: rotate(-3deg); }
+.right-strip { right: 10%; transform: rotate(3deg); }
+
+.roadmap-strip:hover { transform: scale(1.06) rotate(-1deg); }
+
+/* RESOURCES PANEL */
+.resources-panel {
+  width: 320px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.resources-panel h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.resource-card {
+  display: block;
+  padding: 12px 16px;
+  background: #e8f0ff; /* light pastel blue */
+  border-left: 6px solid #4a7bff; /* clean blue accent */
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #243d70;
+  transition: 0.2s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  background: #dce9ff;
+}
+
+
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.modal-image {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.close-btn {
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #c0392b;
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
+  .roadmaps-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .scrapbook-container, .resources-panel {
+    width: 92%;
+    max-width: 700px;
+  }
+}
+
+

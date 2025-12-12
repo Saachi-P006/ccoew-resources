@@ -1,0 +1,256 @@
+.contact-box {
+  width: 90%;
+  max-width: 450px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  animation: fadeIn 0.7s ease;
+}
+
+.contact-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.contact-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-box label {
+  font-weight: 600;
+}
+
+.contact-box input,
+.contact-box select,
+.contact-box textarea {
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.contact-box input:focus,
+.contact-box select:focus,
+.contact-box textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.submit-btn {
+  background: #3498db;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  background: #217dbb;
+}
+
+.success-message {
+  text-align: center;
+  color: #27ae60;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Container for form + testimonials */
+.contact-section-container {
+  display: flex;
+  gap: 100px; /* space between form and testimonials */
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+/* LEFT — FORM BOX */
+.contact-left {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+  margin-left: 150px; /* push more to right */
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  animation: fadeIn 0.7s ease;
+}
+
+.contact-left h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.contact-left form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-left label {
+  font-weight: 600;
+}
+
+.contact-left input,
+.contact-left select,
+.contact-left textarea {
+  padding: 10px 12px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.contact-left input:focus,
+.contact-left select:focus,
+.contact-left textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.submit-btn {
+  background: #3498db;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  background: #217dbb;
+}
+
+.success-message {
+  text-align: center;
+  color: #27ae60;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}
+
+/* RIGHT — TESTIMONIALS */
+.testimonial-column {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+
+/* Stagger effect */
+.testimonial-box:nth-child(1) {
+  margin-top: 0px;
+}
+
+.testimonial-box:nth-child(2) {
+  margin-top: 150px;
+}
+
+.testimonial-box:nth-child(3) {
+  margin-top: 300px;
+}
+
+.testimonial-box {
+  background: #e9f2ff; /* soft light blue */
+  padding: 20px;
+  width: 180px;
+  height: 180px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  color: #264673; /* deeper soft navy for text */
+  transition: transform 0.3s ease;
+}
+
+.testimonial-box:hover {
+  transform: translateY(-5px);
+  background: #dfeaff; /* slightly stronger blue on hover */
+}
+
+.testimonial-box .quote {
+  font-size: 50px;
+  color: #000; /* soft bluish quote */
+  margin-bottom: 8px;
+}
+
+.testimonial-box h4 {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #3d5a8c; /* soft navy */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-section-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-left {
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+
+  .testimonial-column {
+    justify-content: center;
+  }
+
+  .testimonial-box {
+    width: 150px;
+    height: 150px;
+  }
+}
+
