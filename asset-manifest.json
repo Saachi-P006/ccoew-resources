@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/ccoew-resources/static/css/main.2436997e.css",
+    "main.js": "/ccoew-resources/static/js/main.e02268db.js",
+    "static/js/453.44a2d459.chunk.js": "/ccoew-resources/static/js/453.44a2d459.chunk.js",
+    "static/media/Comp.gif": "/ccoew-resources/static/media/Comp.76fecb29b7e88f3f8f2b.gif",
+    "static/media/AIRoadmap.gif": "/ccoew-resources/static/media/AIRoadmap.2c125ae0839d2ac35ac1.gif",
+    "static/media/AndroidRoadmap.svg": "/ccoew-resources/static/media/AndroidRoadmap.9641ecc832fb30c04280db9e53705164.svg",
+    "static/media/image.png": "/ccoew-resources/static/media/image.63192ca41a1caccd5152.png",
+    "static/media/DatascienceRoadmap.png": "/ccoew-resources/static/media/DatascienceRoadmap.a68cfac951686cbdc4a9.png",
+    "static/media/WebdevelopmentRoadmap.png": "/ccoew-resources/static/media/WebdevelopmentRoadmap.b55b415b74b2d1b90a06.png",
+    "static/media/JavaRoadmap.jpg": "/ccoew-resources/static/media/JavaRoadmap.69bd32d763b45d6b7e31.jpg",
+    "static/media/DSARoadmap.jpg": "/ccoew-resources/static/media/DSARoadmap.fd29c307923436972f08.jpg",
+    "static/media/Entc.png": "/ccoew-resources/static/media/Entc.71e9cecb594e8517b4ec.png",
+    "static/media/CybersecurityRoadmap.jpg": "/ccoew-resources/static/media/CybersecurityRoadmap.24f699fbbcf14874d918.jpg",
+    "static/media/StartupRoadmap.jpg": "/ccoew-resources/static/media/StartupRoadmap.594ea2bcd2769be5280a.jpg",
+    "static/media/Comp.png": "/ccoew-resources/static/media/Comp.0691feda27d161528844.png",
+    "static/media/MLRoadmap.webp": "/ccoew-resources/static/media/MLRoadmap.1ecab7707d1036cc17bd.webp",
+    "static/media/Instru.png": "/ccoew-resources/static/media/Instru.a96b75eaa5a1ca1bbd3b.png",
+    "static/media/Mech.png": "/ccoew-resources/static/media/Mech.0972f8da627388503b89.png",
+    "static/media/IT.png": "/ccoew-resources/static/media/IT.2693a8902091a76523c8.png",
+    "static/media/FullstackRoadmap.jpg": "/ccoew-resources/static/media/FullstackRoadmap.f8fd74b8a7d9719302a0.jpg",
+    "index.html": "/ccoew-resources/index.html",
+    "main.2436997e.css.map": "/ccoew-resources/static/css/main.2436997e.css.map",
+    "main.e02268db.js.map": "/ccoew-resources/static/js/main.e02268db.js.map",
+    "453.44a2d459.chunk.js.map": "/ccoew-resources/static/js/453.44a2d459.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2436997e.css",
+    "static/js/main.e02268db.js"
+  ]
+}
