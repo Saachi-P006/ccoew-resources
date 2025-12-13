@@ -1,3 +1,4 @@
+/* ===================== CONTACT FORM STYLES ===================== */
 .contact-box {
   width: 90%;
   max-width: 450px;
@@ -71,33 +72,39 @@ textarea {
   margin-top: 10px;
 }
 
+.error {
+  color: red;
+  font-size: 13px;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-
-/* Container for form + testimonials */
+/* ===================== CONTAINER ===================== */
 .contact-section-container {
   display: flex;
-  gap: 100px; /* space between form and testimonials */
-  justify-content: flex-start;
+  gap: 50px;
+  justify-content: center;
   align-items: flex-start;
   width: 100%;
   flex-wrap: wrap;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* LEFT — FORM BOX */
 .contact-left {
-  flex: 1;
-  min-width: 300px;
+  flex: 1 1 300px;
   max-width: 450px;
-  margin-left: 150px; /* push more to right */
+  width: 90%;
+  margin: 0;
   background: white;
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   padding: 30px;
+  box-sizing: border-box;
   animation: fadeIn 0.7s ease;
 }
 
@@ -135,65 +142,17 @@ textarea {
   box-shadow: 0 0 6px rgba(52, 152, 219, 0.3);
 }
 
-textarea {
-  resize: none;
-  height: 100px;
-}
-
-.submit-btn {
-  background: #3498db;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: 600;
-}
-
-.submit-btn:hover {
-  background: #217dbb;
-}
-
-.success-message {
-  text-align: center;
-  color: #27ae60;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-.error {
-  color: red;
-  font-size: 13px;
-}
-
-/* RIGHT — TESTIMONIALS */
+/* ===================== TESTIMONIALS ===================== */
 .testimonial-column {
-  flex: 1;
-  min-width: 280px;
+  flex: 1 1 250px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: flex-start;
-}
-
-
-/* Stagger effect */
-.testimonial-box:nth-child(1) {
-  margin-top: 0px;
-}
-
-.testimonial-box:nth-child(2) {
-  margin-top: 150px;
-}
-
-.testimonial-box:nth-child(3) {
-  margin-top: 300px;
+  justify-content: center;
 }
 
 .testimonial-box {
-  background: #e9f2ff; /* soft light blue */
+  background: #e9f2ff;
   padding: 20px;
   width: 180px;
   height: 180px;
@@ -205,52 +164,57 @@ textarea {
   align-items: center;
   text-align: center;
   font-size: 14px;
-  color: #264673; /* deeper soft navy for text */
+  color: #264673;
   transition: transform 0.3s ease;
 }
 
 .testimonial-box:hover {
   transform: translateY(-5px);
-  background: #dfeaff; /* slightly stronger blue on hover */
+  background: #dfeaff;
 }
 
 .testimonial-box .quote {
   font-size: 50px;
-  color: #000; /* soft bluish quote */
+  color: #000;
   margin-bottom: 8px;
 }
 
 .testimonial-box h4 {
   margin-top: 10px;
   font-size: 13px;
-  color: #3d5a8c; /* soft navy */
+  color: #3d5a8c;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* RESPONSIVE */
+/* ===================== RESPONSIVE ===================== */
 @media (max-width: 768px) {
   .contact-section-container {
     flex-direction: column;
     align-items: center;
+    gap: 30px;
   }
 
   .contact-left {
-    margin-left: 0;
-    margin-bottom: 30px;
+    max-width: 95%;
+    width: 95%;
+    padding: 20px;
+    margin: 0 auto;
   }
 
   .testimonial-column {
     justify-content: center;
+    gap: 15px;
   }
 
   .testimonial-box {
-    width: 150px;
-    height: 150px;
+    width: 45%; /* two per row */
+    height: auto;
+    margin-top: 0 !important;
   }
 }
 
+@media (max-width: 480px) {
+  .testimonial-box {
+    width: 100%; /* single column on very small screens */
+    height: auto;
+  }
+}
