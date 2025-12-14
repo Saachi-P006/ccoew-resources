@@ -299,3 +299,39 @@ h2 {
 #home {
   padding-bottom: 60px;
 }
+
+/* ------------------ Learn Card Explore Button Upgrade ------------------ */
+
+.card-back button {
+  padding: 12px 26px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.92);
+  color: #2c3e50;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.card-back button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+
+/* Click effect */
+.card-back button:active {
+  transform: scale(0.97);
+}
+
+/* Mobile safety */
+@media (max-width: 600px) {
+  .card-back button {
+    padding: 11px 24px;
+    font-size: 0.95rem;
+  }
+}
