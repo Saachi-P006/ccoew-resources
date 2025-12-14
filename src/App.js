@@ -70,15 +70,24 @@ function App() {
     },
   ];
 
+  const years = [
+  { id: "fy", label: "1st Year", color: "#800000" },
+  { id: "sy", label: "2nd Year", color: "#808080" },
+  { id: "ty", label: "3rd Year", color: "#800000" },
+  { id: "ly", label: "4th Year", color: "#808080" },
+];
+
   const explorerData = {
     semesters: [
       {
         id: "sem1",
         label: "Semester 1",
+        color: "#800000",
         subjects: [
           {
             id: "maths1",
             label: "Mathematics I",
+            color: "#800000",
             folders: {
               PYQ: [
                 { label: "Maths I - PYQ Set 1 (pdf)", url: "#" },
@@ -99,6 +108,7 @@ function App() {
           {
             id: "physics",
             label: "Physics",
+            color: "#808080",
             folders: {
               PYQ: [{ label: "Physics PYQ (pdf)", url: "#" }],
               Notes: [{ label: "Physics - Notes", url: "#" }],
@@ -109,6 +119,7 @@ function App() {
           {
             id: "programming",
             label: "Programming (Python)",
+            color: "#800000",
             folders: {
               PYQ: [{ label: "Programming PYQ", url: "#" }],
               Notes: [{ label: "Python Notes", url: "#" }],
@@ -119,6 +130,7 @@ function App() {
           {
             id: "ed",
             label: "Engineering Drawing",
+            color: "#808080",
             folders: {
               PYQ: [{ label: "ED PYQ", url: "#" }],
               Notes: [{ label: "ED Notes", url: "#" }],
@@ -131,10 +143,12 @@ function App() {
       {
         id: "sem2",
         label: "Semester 2",
+        color: "#808080",     
         subjects: [
           {
             id: "maths2",
             label: "Mathematics II",
+            color: "#800000",
             folders: {
               PYQ: [{ label: "Maths II PYQ", url: "#" }],
               Notes: [{ label: "Maths II Notes", url: "#" }],
@@ -145,6 +159,7 @@ function App() {
           {
             id: "chemistry",
             label: "Chemistry",
+            color: "#808080",
             folders: {
               PYQ: [{ label: "Chemistry PYQ", url: "#" }],
               Notes: [{ label: "Chem Notes", url: "#" }],
@@ -155,6 +170,7 @@ function App() {
           {
             id: "oop",
             label: "OOP (Java)",
+            color: "#800000",
             folders: {
               PYQ: [{ label: "OOP PYQ", url: "#" }],
               Notes: [{ label: "OOP Notes", url: "#" }],
@@ -165,6 +181,7 @@ function App() {
           {
             id: "be",
             label: "Basic Electronics",
+            color: "#808080",
             folders: {
               PYQ: [{ label: "BE PYQ", url: "#" }],
               Notes: [{ label: "BE Notes", url: "#" }],
@@ -179,28 +196,36 @@ function App() {
 
   const [explorerOpen, setExplorerOpen] = useState(false);
   const [activeBranch, setActiveBranch] = useState(null);
-  const [level, setLevel] = useState("semester");
+  const [level, setLevel] = useState("year");
+  const [activeYear, setActiveYear] = useState(null);
   const [activeSemester, setActiveSemester] = useState(null);
   const [activeSubject, setActiveSubject] = useState(null);
   const [activeFolder, setActiveFolder] = useState(null);
 
   function openExplorer(branchTitle) {
-    setActiveBranch(branchTitle);
-    setExplorerOpen(true);
-    setLevel("semester");
-    setActiveSemester(null);
-    setActiveSubject(null);
-    setActiveFolder(null);
-    document.body.style.overflow = "hidden";
-  }
+  setActiveBranch(branchTitle);
+  setExplorerOpen(true);
+  setLevel("year");
+  setActiveYear(null);
+  setActiveSemester(null);
+  setActiveSubject(null);
+  setActiveFolder(null);
+  document.body.style.overflow = "hidden";
+}
 
   function closeExplorer() {
-    setExplorerOpen(false);
+  setExplorerOpen(false);
+  setLevel("year");
+  setActiveYear(null);
+  setActiveSemester(null);
+  setActiveSubject(null);
+  setActiveFolder(null);
+  document.body.style.overflow = "";
+}
+
+  function chooseYear(year) {
+    setActiveYear(year);
     setLevel("semester");
-    setActiveSemester(null);
-    setActiveSubject(null);
-    setActiveFolder(null);
-    document.body.style.overflow = "";
   }
 
   function chooseSemester(sem) {
@@ -219,18 +244,20 @@ function App() {
   }
 
   function back() {
-    if (level === "items") setLevel("folder");
-    else if (level === "folder") setLevel("subject");
-    else if (level === "subject") setLevel("semester");
-    else closeExplorer();
-  }
+  if (level === "items") setLevel("folder");
+  else if (level === "folder") setLevel("subject");
+  else if (level === "subject") setLevel("semester");
+  else if (level === "semester") setLevel("year");
+  else closeExplorer();
+}
+
 
   // Folder colors
   const folderColors = {
-    PYQ: "#e74c3c",
-    Notes: "#3498db",
-    Tutorials: "#9b59b6",
-    Learn: "#1abc9c",
+    PYQ: "#808080",
+    Notes: "#800000",
+    Tutorials: "#808080",
+    Learn: "#800000",
   };
 
   return (
@@ -380,88 +407,145 @@ function App() {
                 &larr;
               </button>
               <div className="explorer-breadcrumb">
-                <strong>{activeBranch}</strong>
-                {level !== "semester" && <span className="crumb-sep">/</span>}
-                {level === "semester" && <span>Semesters</span>}
-                {level === "subject" && activeSemester && <span>{activeSemester.label}</span>}
-                {level === "folder" && activeSemester && activeSubject && (
-                  <span>
-                    {activeSemester.label}
-                    <span className="crumb-sep">/</span>
-                    {activeSubject.label}
-                  </span>
-                )}
-                {level === "items" && activeSemester && activeSubject && activeFolder && (
-                  <span>
-                    {activeSemester.label}
-                    <span className="crumb-sep">/</span>
-                    {activeSubject.label}
-                    <span className="crumb-sep">/</span>
-                    {activeFolder}
-                  </span>
-                )}
-              </div>
+  <strong>{activeBranch}</strong>
+
+  <span className="crumb-sep">/</span>
+
+  {level === "year" && <span>Years</span>}
+
+  {level !== "year" && activeYear && (
+    <>
+      <span>{activeYear.label}</span>
+      <span className="crumb-sep">/</span>
+    </>
+  )}
+
+  {level === "semester" && <span>Semesters</span>}
+
+  {level === "subject" && activeSemester && (
+    <span>{activeSemester.label}</span>
+  )}
+
+  {level === "folder" && activeSemester && activeSubject && (
+    <span>
+      {activeSemester.label}
+      <span className="crumb-sep">/</span>
+      {activeSubject.label}
+    </span>
+  )}
+
+  {level === "items" && activeSemester && activeSubject && activeFolder && (
+    <span>
+      {activeSemester.label}
+      <span className="crumb-sep">/</span>
+      {activeSubject.label}
+      <span className="crumb-sep">/</span>
+      {activeFolder}
+    </span>
+  )}
+</div>
               <button className="explorer-close" onClick={closeExplorer}>
                 ✕
               </button>
             </div>
 
             <div className="explorer-content">
-              {level === "semester" && (
-                <div className="explorer-grid">
-                  {explorerData.semesters.map((sem) => (
-                    <div key={sem.id} className="explorer-card" onClick={() => chooseSemester(sem)}>
-                      <h4>{sem.label}</h4>
-                      <p>{sem.subjects.length} subjects</p>
-                    </div>
-                  ))}
-                </div>
-              )}
 
-              {level === "subject" && activeSemester && (
-                <div className="explorer-grid">
-                  {activeSemester.subjects.map((sub) => (
-                    <div key={sub.id} className="explorer-card" onClick={() => chooseSubject(sub)}>
-                      <h4>{sub.label}</h4>
-                      <p>{Object.keys(sub.folders).length} folders</p>
-                    </div>
-                  ))}
-                </div>
-              )}
+  {/* ===== YEAR ===== */}
+  {level === "year" && (
+    <div className="explorer-grid">
+      {years.map((year) => (
+        <div
+          key={year.id}
+          className="explorer-card"
+          style={{ backgroundColor: year.color, color: "white" }}
+          onClick={() => chooseYear(year)}
+        >
+          <h4>{year.label}</h4>
+        </div>
+      ))}
+    </div>
+  )}
 
-              {level === "folder" && activeSubject && (
-                <div className="explorer-grid">
-                  {Object.keys(activeSubject.folders).map((folderKey) => (
-                    <div
-                      key={folderKey}
-                      className="explorer-card"
-                      style={{ backgroundColor: folderColors[folderKey] }}
-                      onClick={() => chooseFolder(folderKey)}
-                    >
-                      <h4>{folderKey}</h4>
-                      <p>{activeSubject.folders[folderKey].length} items</p>
-                    </div>
-                  ))}
-                </div>
-              )}
+  {/* ===== SEMESTER ===== */}
+  {level === "semester" && activeYear && (
+  <div className="explorer-grid">
+    {explorerData.semesters.map((sem) => (
+      <div
+        key={sem.id}
+        className="explorer-card"
+        style={{
+          backgroundColor: sem.color,
+          color: "white"
+        }}
+        onClick={() => chooseSemester(sem)}
+      >
+        <h4>{sem.label}</h4>
+        <p>{sem.subjects.length} subjects</p>
+      </div>
+    ))}
+  </div>
+)}
 
-              {level === "items" && activeSubject && (
-                <div className="items-list">
-                  {activeSubject.folders[activeFolder].map((it, idx) => (
-                    <a
-                      key={idx}
-                      className="item-row"
-                      href={it.url || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div className="item-title">{it.label}</div>
-                      <div className="item-action">Open</div>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
+
+  {/* ===== SUBJECT ===== */}
+  {level === "subject" && activeSemester && (
+  <div className="explorer-grid">
+    {activeSemester.subjects.map((sub) => (
+      <div
+        key={sub.id}
+        className="explorer-card"
+        style={{
+          backgroundColor: sub.color || "#34495e",
+          color: "white"
+        }}
+        onClick={() => chooseSubject(sub)}
+      >
+        <h4>{sub.label}</h4>
+        <p>{Object.keys(sub.folders).length} folders</p>
+      </div>
+    ))}
+  </div>
+)}
+
+
+  {/* ===== FOLDER ===== */}
+  {level === "folder" && activeSubject && (
+    <div className="explorer-grid">
+      {Object.keys(activeSubject.folders).map((folderKey) => (
+        <div
+          key={folderKey}
+          className="explorer-card"
+          style={{ backgroundColor: folderColors[folderKey], color: "white" }}
+          onClick={() => chooseFolder(folderKey)}
+        >
+          <h4>{folderKey}</h4>
+          <p>{activeSubject.folders[folderKey].length} items</p>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {/* ===== ITEMS ===== */}
+  {level === "items" && activeSubject && (
+    <div className="items-list">
+      {activeSubject.folders[activeFolder].map((it, idx) => (
+        <a
+          key={idx}
+          className="item-row"
+          href={it.url || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="item-title">{it.label}</div>
+          <div className="item-action">Open</div>
+        </a>
+      ))}
+    </div>
+  )}
+
+</div>
+
           </div>
         </div>
       )}
