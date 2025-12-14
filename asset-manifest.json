@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ccoew-resources/static/css/main.25871a5d.css",
-    "main.js": "/ccoew-resources/static/js/main.6b40317b.js",
+    "main.js": "/ccoew-resources/static/js/main.d4f143cd.js",
     "static/js/453.44a2d459.chunk.js": "/ccoew-resources/static/js/453.44a2d459.chunk.js",
     "static/media/Comp.gif": "/ccoew-resources/static/media/Comp.76fecb29b7e88f3f8f2b.gif",
     "static/media/AIRoadmap.gif": "/ccoew-resources/static/media/AIRoadmap.2c125ae0839d2ac35ac1.gif",
@@ -22,11 +22,11 @@
     "static/media/FullstackRoadmap.jpg": "/ccoew-resources/static/media/FullstackRoadmap.f8fd74b8a7d9719302a0.jpg",
     "index.html": "/ccoew-resources/index.html",
     "main.25871a5d.css.map": "/ccoew-resources/static/css/main.25871a5d.css.map",
-    "main.6b40317b.js.map": "/ccoew-resources/static/js/main.6b40317b.js.map",
+    "main.d4f143cd.js.map": "/ccoew-resources/static/js/main.d4f143cd.js.map",
     "453.44a2d459.chunk.js.map": "/ccoew-resources/static/js/453.44a2d459.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.25871a5d.css",
-    "static/js/main.6b40317b.js"
+    "static/js/main.d4f143cd.js"
   ]
 }
