@@ -58,8 +58,9 @@ src/
 
 📸 Preview
 
-
-(Add a screenshot of your app here if available)
+<img width="1896" height="866" alt="Screenshot 2025-12-19 160305" src="https://github.com/user-attachments/assets/1913a776-433b-4acd-9425-177e36be0430" />
+<img width="1546" height="860" alt="Screenshot 2025-12-19 160352" src="https://github.com/user-attachments/assets/1ba6bfa0-d850-41cc-9043-e6b01193503a" />
+<img width="1766" height="823" alt="Screenshot 2025-12-19 160417" src="https://github.com/user-attachments/assets/b08586ab-5baa-412e-9747-312ecfa6ad54" />
 
 ---
 
