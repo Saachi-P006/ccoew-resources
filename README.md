@@ -2,7 +2,11 @@
 
 College Resources is a fully responsive, interactive web app designed to provide students with easy access to study materials, roadmaps, and quick links. Built with React, HTML, CSS, and JavaScript, it features a modern card-style UI and smooth animations for an intuitive experience.
 
+---
+
 ⚠️ Note: The "Learn" section currently contains a skeleton of the curriculum. Actual college course content can be added later. All other components are fully functional.
+
+---
 
 🌟 Features
 
@@ -18,6 +22,8 @@ College Resources is a fully responsive, interactive web app designed to provide
 
 💅 Modern and clean UI with card-based layouts and animations
 
+---
+
 🧠 Tech Stack
 
 Frontend: React, HTML, CSS, JavaScript
@@ -25,6 +31,8 @@ Frontend: React, HTML, CSS, JavaScript
 Styling: CSS Flexbox, responsive layouts, card-style UI
 
 Libraries: None (vanilla React for components)
+
+---
 
 📂 Folder Structure
 src/
@@ -46,10 +54,14 @@ src/
 │   ├── Roadmaps.js
 │   └── Roadmaps.css
 
+---
+
 📸 Preview
 
 
 (Add a screenshot of your app here if available)
+
+---
 
 🧩 Future Enhancements
 
@@ -60,6 +72,8 @@ Integrate cloud-based data storage
 Dark mode toggle for better accessibility
 
 Improved calendar functionality with event reminders
+
+---
 
 ⭐ Contributing
 
