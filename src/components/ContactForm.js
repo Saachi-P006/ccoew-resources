@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./ContactForm.css";
-
-const SHEET_URL = "https://api.sheetbest.com/sheets/975bd07a-8c43-4f29-a0a9-ca7da2bf9222";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -12,72 +9,77 @@ function ContactForm() {
     suggestions: "",
   });
 
-  const [success, setSuccess] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const validate = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.contact.trim()) newErrors.contact = "Contact number is required";
-    else if (!/^\d{10}$/.test(formData.contact))
-      newErrors.contact = "Enter a valid 10-digit number";
-    if (!formData.suggestions.trim()) newErrors.suggestions = "Suggestions are required";
-    return newErrors;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    const payload = {
-      Name: formData.name,
-      Contact: formData.contact,
-      Year: formData.year,
-      Suggestions: formData.suggestions,
-    };
 
     try {
-      await axios.post(SHEET_URL, payload);
-      setSuccess(true);
-      setFormData({
-        name: "",
-        contact: "",
-        year: "1st Year",
-        suggestions: "",
-      });
-      setErrors({});
-      setTimeout(() => setSuccess(false), 3000);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Something went wrong. Please check your Sheet URL or network.");
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbwLYqSbYR93WtdkdHD_jAlqBOdaV6Q4MusMfU5OE8FM5F97y2oqPPfPU3B8TOsDQqNJfw/exec",
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.result === "success") {
+        setShowPopup(true);
+
+        setFormData({
+          name: "",
+          contact: "",
+          year: "1st Year",
+          suggestions: "",
+        });
+
+        setTimeout(() => setShowPopup(false), 3000);
+      } else {
+        throw new Error("Apps Script error");
+      }
+    } catch (err) {
+      alert("Submission failed");
+      console.error(err);
     }
   };
 
   return (
     <div className="contact-section-container">
-    
       {/* LEFT — FORM */}
       <div className="contact-box contact-left">
         <h2>Contact Us</h2>
+
         <form onSubmit={handleSubmit}>
           <label>Name</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
-          {errors.name && <p className="error">{errors.name}</p>}
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
 
           <label>Contact Number</label>
-          <input type="text" name="contact" value={formData.contact} onChange={handleChange} />
-          {errors.contact && <p className="error">{errors.contact}</p>}
+          <input
+            type="text"
+            name="contact"
+            value={formData.contact}
+            onChange={handleChange}
+            required
+          />
 
           <label>Year</label>
-          <select name="year" value={formData.year} onChange={handleChange}>
+          <select
+            name="year"
+            value={formData.year}
+            onChange={handleChange}
+          >
             <option>1st Year</option>
             <option>2nd Year</option>
             <option>3rd Year</option>
@@ -85,11 +87,16 @@ function ContactForm() {
           </select>
 
           <label>Suggestions</label>
-          <textarea name="suggestions" value={formData.suggestions} onChange={handleChange}></textarea>
-          {errors.suggestions && <p className="error">{errors.suggestions}</p>}
+          <textarea
+            name="suggestions"
+            value={formData.suggestions}
+            onChange={handleChange}
+            required
+          ></textarea>
 
-          <button type="submit" className="submit-btn">Submit</button>
-          {success && <p className="success-message">Form submitted successfully!</p>}
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
         </form>
       </div>
 
@@ -114,6 +121,21 @@ function ContactForm() {
         </div>
       </div>
 
+      {/* SUCCESS POPUP */}
+      {showPopup && (
+        <div className="popup-overlay">
+          <div className="popup-card">
+            <button
+              className="popup-close"
+              onClick={() => setShowPopup(false)}
+            >
+              ✕
+            </button>
+            <h3>🎉 Submitted Successfully!</h3>
+            <p>Thank you for your feedback. We’ll use it to improve the platform 🚀</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
